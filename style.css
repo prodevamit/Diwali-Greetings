@@ -1,94 +1,152 @@
-/* Basic page layout */
-* { box-sizing: border-box; }
-html,body { height: 100%; margin: 0; padding: 0; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: radial-gradient(circle at 10% 10%, #2b1b3a 0%, #0a0a10 60%);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
-/* Main container */
 .container {
-  max-width: 760px;
-  width: 100%;
-  padding: 2rem;
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(176, 109, 109, 0.01));
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Greeting */
-h1 {
-  font-size: clamp(1.6rem, 3.6vw, 2.8rem);
-  margin: 0;
-  letter-spacing: 0.6px;
-  animation: glow 2s infinite alternate;
+.greeting-card {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: slideIn 0.8s ease-out;
 }
 
-/* From line (name) */
-#from {
-  margin-top: 1rem;
-  font-weight: 600;
+.greeting-card h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Diyas row */
-.diyas {
-  display:flex;
-  gap: 28px;
-  justify-content:center;
-  margin-top: 28px;
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.95;
 }
 
-.diya {
-  width: 62px;
-  height: 44px;
-  background: linear-gradient(180deg,#f08c00,#ffb347);
-  border-radius: 60px 60px 10px 10px;
-  position: relative;
-  transform-origin: center bottom;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+.greeting-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* flame */
-.diya::before{
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -36px;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 32px;
-  background: radial-gradient(circle at 40% 30%, #fff 0%, #ffef85 30%, #ff7a00 70%);
-  border-radius: 50% 50% 40% 40%;
-  animation: flicker 0.18s infinite alternate;
-  filter: drop-shadow(0 6px 8px rgba(255,140,0,0.15));
+.greeting-input input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-/* small flicker and glow animation */
+.greeting-input button {
+    padding: 12px 20px;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.greeting-input button:hover {
+    background: #b71c1c;
+}
+
+.greeting-output {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#customGreeting {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    padding: 10px 15px;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.actions button:hover {
+    background: #b71c1c;
+}
+
+.decorative-lights {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffd700;
+    box-shadow: 0 0 20px #ffd700;
+    animation: flicker 1.5s infinite;
+}
+
+.light:nth-child(2) { animation-delay: 0.3s; }
+.light:nth-child(3) { animation-delay: 0.6s; }
+.light:nth-child(4) { animation-delay: 0.9s; }
+.light:nth-child(5) { animation-delay: 1.2s; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes flicker {
-  0% { transform: translateX(-50%) scale(1); opacity: 0.85; }
-  100% { transform: translateX(-50%) scale(1.18); opacity: 1; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px rgba(255,200,60,0.6); }
-  to   { text-shadow: 0 0 30px rgba(255,220,80,0.95); }
-}
-
-/* hint text */
-.hint {
-  margin-top: 18px;
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.75);
-}
-
-/* small responsive tweaks */
-@media (max-width: 480px) {
-  .diyas { gap: 12px; }
-  .diya { width: 44px; height: 30px; }
+@media (max-width: 600px) {
+    .greeting-card {
+        padding: 25px;
+        margin: 20px;
+    }
+    .greeting-card h1 { font-size: 36px; }
 }
