@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Diwali 🎆</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwali Greetings</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1 id="greeting">✨ Happy Diwali! ✨</h1>
-    <p id="from"></p>
+    <div class="container">
+        <div class="greeting-card">
+            <h1>🪔 Happy Diwali 🪔</h1>
+            <p class="subtitle">Wishing you joy, light, and prosperity!</p>
+            
+            <div class="greeting-input">
+                <input type="text" id="nameInput" placeholder="Enter your name" maxlength="30">
+                <button onclick="generateGreeting()">Generate Greeting</button>
+            </div>
 
-    <div class="diyas" aria-hidden="true">
-      <div class="diya"></div>
-      <div class="diya"></div>
-      <div class="diya"></div>
+            <div id="greetingOutput" class="greeting-output">
+                <p id="customGreeting"></p>
+            </div>
+
+            <div class="actions">
+                <button onclick="shareGreeting()">📤 Share</button>
+                <button onclick="downloadGreeting()">📥 Download</button>
+                <button onclick="copyGreeting()">📋 Copy</button>
+            </div>
+        </div>
+
+        <div class="decorative-lights">
+            <span class="light"></span>
+            <span class="light"></span>
+            <span class="light"></span>
+            <span class="light"></span>
+            <span class="light"></span>
+        </div>
     </div>
 
-    <p class="hint">Share by adding <code>?name=Amit</code> to the link</p>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
